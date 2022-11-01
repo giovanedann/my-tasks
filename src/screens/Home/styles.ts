@@ -32,15 +32,17 @@ export const HeaderTitle = styled.Text`
 `
 
 export const TaskInputContainer = styled.View`
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 120px;
-  padding: 20px;
+  height: 140px;
+  padding: 30px 20px;
 `
 
 export const TaskInput = styled.TextInput`
   background-color: #fff;
+  width: 100%;
   color: #000;
-  margin-top: 20px;
   font-size: 18px;
   padding: ${Platform.OS === 'android' ? '14px' : '10px'};
   border-radius: 8px;
@@ -53,7 +55,6 @@ export const AddTaskButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   margin-top: 12px;
-  align-self: flex-end;
   background-color: #1b70f7;
 `
 
