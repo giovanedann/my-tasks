@@ -13,3 +13,5 @@ export const Title = styled.Text`
   color: #000;
   font-weight: 700;
 `
+
+export const List = styled.FlatList``

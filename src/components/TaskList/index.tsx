@@ -10,9 +10,13 @@ const TaskList = ({taskList}: Props) => {
   return (
     <S.Container>
       <S.Title>My tasks</S.Title>
-      {taskList.map(task => (
-        <Task key={task} title={task} handleDelete={() => {}} />
-      ))}
+      <S.List
+        data={taskList}
+        keyExtractor={(title: string, index: number) => title + index}
+        renderItem={({item}: {item: string}) => (
+          <Task title={item} handleDelete={() => {}} />
+        )}
+      />
     </S.Container>
   )
 }
