@@ -1,6 +1,7 @@
-import React, {Dispatch, SetStateAction, useContext} from 'react'
+import React, {Dispatch, SetStateAction, useContext, useEffect} from 'react'
 import {createContext, ReactNode, useCallback, useMemo, useState} from 'react'
 import {Alert} from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 interface TaskContextProps {
   currentTask: string
@@ -14,6 +15,8 @@ interface TaskContextProps {
 interface TaskProviderProps {
   children?: ReactNode
 }
+
+const tasksStorageKey = '@MyTasks:Tasks'
 
 const TaskContext = createContext({} as TaskContextProps)
 
@@ -37,6 +40,25 @@ const TaskProvider = ({children}: TaskProviderProps) => {
         taskTitle => taskTitle.toLowerCase() !== title.toLowerCase(),
       ),
     )
+  }, [])
+
+  const saveTasks = useCallback(async (data: string[]) => {
+    await AsyncStorage.setItem(tasksStorageKey, JSON.stringify(data))
+  }, [])
+
+  const loadTasks = useCallback(async () => {
+    const storageTasks = await AsyncStorage.getItem(tasksStorageKey)
+    if (storageTasks) {
+      setTaskList(JSON.parse(storageTasks))
+    }
+  }, [])
+
+  useEffect(() => {
+    saveTasks(taskList)
+  }, [taskList, saveTasks])
+
+  useEffect(() => {
+    loadTasks()
   }, [])
 
   const contextValue = useMemo(
