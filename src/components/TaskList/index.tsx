@@ -8,7 +8,7 @@ interface RenderItemProps {
 }
 
 const TaskList = () => {
-  const {taskList, handleRemoveTask} = useTaskList()
+  const {taskList} = useTaskList()
 
   return (
     <S.Container>
@@ -16,9 +16,7 @@ const TaskList = () => {
       <S.List
         data={taskList}
         keyExtractor={(title: string, index: number) => title + index}
-        renderItem={({item}: RenderItemProps) => (
-          <Task title={item} handleDelete={() => handleRemoveTask(item)} />
-        )}
+        renderItem={({item}: RenderItemProps) => <Task title={item} />}
       />
     </S.Container>
   )
