@@ -1,21 +1,11 @@
 import React, {useCallback, useState} from 'react'
 import {Alert} from 'react-native'
 import TaskList from '../../components/TaskList'
+import {useTaskList} from '../../contexts/tasks'
 import * as S from './styles'
 
 const Home = () => {
-  const [currentTask, setCurrentTask] = useState<string>('')
-  const [taskList, setTaskList] = useState<string[]>([])
-
-  const handleAddTask = useCallback(() => {
-    if (!currentTask) {
-      Alert.alert('Your task is empty, add some text before adding.')
-      return
-    }
-
-    setTaskList(prevState => [...prevState, currentTask])
-    setCurrentTask('')
-  }, [currentTask])
+  const {currentTask, setCurrentTask, taskList, handleAddTask} = useTaskList()
 
   return (
     <S.SafeAreaView>
