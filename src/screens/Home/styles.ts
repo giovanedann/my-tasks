@@ -24,5 +24,5 @@ export const TaskInput = styled.TextInput`
   margin-top: 20px;
   font-size: 18px;
   padding: ${Platform.OS === 'android' ? '14px' : '10px'};
-  border-radius: 0.8px;
+  border-radius: 8px;
 `
