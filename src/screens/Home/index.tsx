@@ -1,15 +1,14 @@
 import React from 'react'
-import {Text, View, SafeAreaView, TextInput} from 'react-native'
-import styles from './styles'
+import * as S from './styles'
 
 const Home = () => {
   return (
-    <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.wrapper}>
-        <Text style={styles.title}>Welcome, user!</Text>
-        <TextInput style={styles.input} />
-      </View>
-    </SafeAreaView>
+    <S.SafeAreaView>
+      <S.Wrapper>
+        <S.Title>Welcome, user!</S.Title>
+        <S.TaskInput />
+      </S.Wrapper>
+    </S.SafeAreaView>
   )
 }
 

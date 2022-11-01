@@ -1,29 +1,28 @@
-import {StyleSheet, Platform} from 'react-native'
+import {Platform} from 'react-native'
+import styled from 'styled-components/native'
 
-const styles = StyleSheet.create({
-  safeAreaView: {
-    backgroundColor: '#f6f5fc',
-    flex: 1,
-  },
-  wrapper: {
-    backgroundColor: '#f6f5fc',
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 30,
-  },
-  title: {
-    color: '#000',
-    fontSize: 28,
-    fontWeight: 'bold',
-  },
-  input: {
-    backgroundColor: '#fff',
-    color: '#000',
-    marginTop: 20,
-    fontSize: 18,
-    padding: Platform.OS === 'android' ? 15 : 10,
-    borderRadius: 10,
-  },
-})
+export const SafeAreaView = styled.SafeAreaView`
+  background-color: #f6f5fc;
+  flex: 1;
+`
 
-export default styles
+export const Wrapper = styled.View`
+  background-color: #f6f5fc;
+  flex: 1;
+  padding: 14px 20px;
+`
+
+export const Title = styled.Text`
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+`
+
+export const TaskInput = styled.TextInput`
+  background-color: #fff;
+  color: #000;
+  margin-top: 20px;
+  font-size: 18px;
+  padding: ${Platform.OS === 'android' ? '14px' : '10px'};
+  border-radius: 0.8px;
+`
